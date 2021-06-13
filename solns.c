@@ -1,6 +1,5 @@
 /* Enter your solutions in this file */
 #include <stdio.h>
-#include<cs50.h>
 /*max function*/
 int max(int a[],int n)
 {
@@ -27,5 +26,45 @@ int min(int a[],int n)
 	}
 	return min;
 }
-
+float average(int a[],int n)
+{
+	int sum=0;
+	float avg=0;
+	for(int i=0;i<n;i++)
+	{
+		sum+=a[i];
+	}
+	avg=sum/n;
+	return avg;
+}
+/*mode function*/
+int mode(int a[],int n)
+{
+	int lmax=max(a,n);
+	int lmin=min(a,n);
+	int counts[100],b=-1;
+	for(int i =lmin;i<=lmax;i++)
+		{
+		int cnt=0;
+		for(int j=0;j<n;j++)
+		{
+			if(a[j]==i)
+				cnt++;
+		}
+		counts[++b]=cnt;
+		}
+	int cmax=0,flag=0;
+	for (int i=0;i<=b;i++)
+	{
+		if (counts[i]>cmax)
+		{	cmax=counts[i];
+			flag=i-(0-lmin);
+		}
+		else
+			continue;
+	}
+	return flag;
+}
+		
+					
 			
